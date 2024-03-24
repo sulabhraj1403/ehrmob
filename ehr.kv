@@ -1,0 +1,321 @@
+<title>:
+    GridLayout:
+        cols: 2
+
+        MDRectangleFlatButton:
+            text: 'New Patient'
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'newpatient'
+
+        MDRectangleFlatButton:
+            text: 'Old Patient'
+            
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.transition.duration = 1
+                root.manager.current = 'oldpatient'
+
+        MDRectangleFlatButton:
+            text: "Find By OPD No."
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.transition.duration = 1
+                root.manager.current = 'findbyopdno'
+
+        MDRectangleFlatButton:
+            text: "Find By Name"
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.transition.duration = 1
+                root.manager.current = 'findbyname'
+
+        MDRectangleFlatButton:
+            text: "Find By Name Place"
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.transition.duration = 1
+                root.manager.current = 'findbynameplace'
+
+        MDRectangleFlatButton:
+            text: "Show Dues"
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'showdues'
+        MDRectangleFlatButton:
+            text: "Show"
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'show'
+
+<newpatient>:
+    opdnoentrynew:opdnoentrynew
+    nameentrynew:nameentrynew
+    ageentrynew:ageentrynew
+    dateentrynew:dateentrynew
+	placeentrynew:placeentrynew
+	mobnoentrynew:mobnoentrynew
+	
+    GridLayout:
+        cols:2
+        MDLabel:
+        	text:'OPD No.'
+        TextInput:
+        	id: opdnoentrynew
+        MDLabel:
+        	text:'Name'
+        TextInput:
+        	id: nameentrynew
+        MDLabel:
+        	text:'Age/Gender'
+        TextInput:
+        	id: ageentrynew
+        MDLabel:
+        	text:'Place'
+        TextInput:
+        	id: placeentrynew
+        MDLabel:
+        	text:'Mob No.'
+        TextInput:
+        	id: mobnoentrynew
+        MDLabel:
+        	text:'Date'
+        TextInput:
+        	id: dateentrynew
+        	text:root.dateformat
+        MDRectangleFlatButton:
+            text: 'Submit'
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.savetodatabase()
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'title'
+        MDRectangleFlatButton:
+            text: "Home"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'title'
+
+<oldpatient>:
+    opdnoentryold:opdnoentryold
+    namelabel:namelabel
+    agelabel:agelabel
+    placelabel:placelabel
+    dateentryold:dateentryold
+    mobno:mobno
+    duesentry:duesentry
+    labduesentry:labduesentry
+    xrayduesentry:xrayduesentry
+    billnoentry:billnoentry
+    xraysentry:xraysentry
+    labtestsentry:labtestsentry
+    fees:fees
+    GridLayout:
+        cols:2
+        MDLabel:  
+            text:"OPD No."
+            font_color: 1,1,1,1
+        TextInput:
+            id:opdnoentryold
+        MDRectangleFlatButton:
+            text: "Get Details"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.getdetails()
+        MDLabel:
+            text:"-"
+        MDLabel:
+            text:"Name"
+            font_color: 1,1,1,1
+        MDLabel:
+            id:namelabel
+            text:""
+            font_color: 1,1,1,1
+        MDLabel:
+            text:"Age/Gender"
+            font_color: 1,1,1,1
+        MDLabel:
+            id:agelabel
+            text:""
+            font_color: 1,1,1,1
+        MDLabel:
+            text:"Place"
+            font_color: 1,1,1,1
+        MDLabel:
+            id:placelabel
+            text:""
+            font_color: 1,1,1,1
+        MDLabel:
+            text:"Date"
+            font_color: 1,1,1,1
+        TextInput:
+            id:dateentryold
+            text:root.dateformat
+        MDLabel:
+            text:"Dues"
+            font_color: 1,1,1,1
+        TextInput:
+            id:duesentry
+            text:""
+            font_color: 1,1,1,1
+        MDLabel:
+            text:"Lab Dues"
+            font_color: 1,1,1,1
+        TextInput:
+            id:labduesentry
+            text:""
+        MDLabel:
+            text:"Xray Dues"
+            font_color: 1,1,1,1
+        TextInput:
+            id:xrayduesentry
+            text:""
+        MDLabel:
+            text:"Lab Tests"
+            font_color: 1,1,1,1
+        TextInput:
+            id:labtestsentry
+            text:""
+            font_color: 1,1,1,1
+        MDLabel:
+            text:"Xrays"
+            font_color: 1,1,1,1
+        TextInput:
+            id:xraysentry
+            text:""
+        MDLabel:
+            text:"Bill no."
+            font_color: 1,1,1,1
+        TextInput:
+            id:billnoentry
+            text:""
+        MDLabel:
+            text:"Mob no."
+            font_color: 1,1,1,1
+        TextInput:
+            id:mobno
+            text:""
+        MDLabel:
+            text:"Fees Paid"
+            font_color: 1,0,0,1
+        TextInput:
+            id:fees
+            text:""
+        
+        MDRectangleFlatButton:
+            text: "Home"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'title'
+        MDRectangleFlatButton:
+            text: "Submit"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.submittopddatabase()
+<findbyopdno>:
+    searchopdno:searchopdno
+    GridLayout:
+        cols:2
+        MDLabel:
+            text:"OPD No"
+        TextInput:
+            id:searchopdno
+            text:""
+        MDRectangleFlatButton:
+            text: "Home"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'title'
+        MDRectangleFlatButton:
+            text: "Show Database"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.searchbyopdno()
+    
+        
+
+
+<findbyname>:
+    searchname1:searchname1
+    showqueryname:showqueryname
+    GridLayout:
+        cols:2
+        MDLabel:
+            text:"Name:"
+        TextInput:
+            id:searchname1
+        MDRectangleFlatButton:
+            text: "Submit"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.findbyname()
+        MDLabel:
+            id:showqueryname
+            text:""
+        MDRectangleFlatButton:
+            text: "Home"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'title'
+
+<findbynameplace>:
+    showqueryname2:showqueryname2
+    searchname2:searchname2
+    searchplace:searchplace
+    GridLayout:
+
+        cols:2
+        MDLabel:
+            text:"Name:"
+        TextInput:
+            id:searchname2
+        MDLabel:
+            text:"Place:"
+        TextInput:
+            id:searchplace
+        MDRectangleFlatButton:
+            text: "Submit"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.findbynameplace()
+        MDLabel:
+            id:showqueryname2
+            text:""
+        MDRectangleFlatButton:
+            text: "Home"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'title'
+
+<showdues>:
+    GridLayout:
+        cols:1
+        MDRectangleFlatButton:
+            text: "Home"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'title'
+<show>:
+    showlabel:showlabel
+    GridLayout:
+        cols:2
+        MDLabel:
+            id:showlabel
+            text:""
+        MDRectangleFlatButton:
+            text: "Home"
+            background_color: 1, 0, 0, 1
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'title'
+        MDRectangleFlatButton:
+            text: "Show"
+            background_color: 1, 0.6, 0, 1
+            on_press:
+                root.show()
